@@ -9,7 +9,7 @@ Release:	0.beta%{_beta}.1
 Epoch:		0
 License:	GPL
 Group:		Development/Languages/PHP
-Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}%{?_beta:-beta%{_beta}}.tar.gz
+Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-beta%{_beta}.tar.gz
 # Source0-md5:	914b0272fe68d808ffa11edd741f2eae
 URL:		http://www.klir.com/~johnm/php-mcache/
 BuildRequires:	automake
