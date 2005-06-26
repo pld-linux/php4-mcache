@@ -3,6 +3,7 @@
 
 %define		_beta	6
 Summary:	mcache PHP Extension
+Summary(pl):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
 Release:	0.beta%{_beta}.1
@@ -26,7 +27,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 mcache is a PHP extension that aims to enable developers to easily and
 efficiently cache data to Memcached servers.
 
-The mcache php extension has been developed by John McCaskey and is a
+The mcache PHP extension has been developed by John McCaskey and is a
 wrapper around libmemcache.
 
 The primary advantage to using this mcache extension over other PHP
@@ -39,6 +40,25 @@ between speed and functionality. With the introduction of this new
 extension that is no longer the case. Furthermore, because this
 extension is based off libmemcache it will easily benefit from any
 testing, bug fixes, or enhancements made to the underlying library.
+
+%description -l pl
+mcache to rozszerzenie PHP, którego celem jest umo¿liwienie
+programistom ³atwo i wydajnie cache'owaæ ane w serwerach Memcached.
+
+Rozszerzenie PHP mcache zosta³o stworzone przez Johna McCaskeya i
+jest wrapperem na libmemcache.
+
+G³ównymi zaletami u¿ywania tego rozszerzenia mcache nad innymi
+rozszerzeniami PHP s± szybko¶æ oraz funkcjonalno¶æ. Wcze¶niej istnia³o
+kilka ró¿nych API memcache dla PHP. Kilka z nich by³o dobrych pod
+wzglêdem funkcjonalno¶ci, ale wolnych ze wzglêdu na natywn±
+implementacjê w PHP. Rozszerzenie PECL mia³o znakomit± szybko¶æ (choæ
+nie tak dobr± jak mcache), ale nie obs³ugiwa³o wielu serwerów
+U¿ytkownicy byli zmuszeni do wybierania miêdzy szybko¶ci± a
+funkcjonalno¶ci±. Wraz z wprowadzeniem tego nowego rozszerzenia
+problem przesta³ istnieæ. Co wiêcej, poniewa¿ to rozszerzenie jest
+oparte na libmemcache, bêdzie ³atwo korzystaæ z ka¿dego testowania,
+poprawek b³êdów czy rozszerzeñ dokonanych w tej bibliotece.
 
 %prep
 %setup -q -n php-%{_name}-ext-%{version}%{?_beta:-beta%{_beta}}
