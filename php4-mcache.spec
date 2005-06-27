@@ -8,7 +8,7 @@ Name:		php4-%{_name}
 Version:	1.2.0
 Release:	0.beta%{_beta}.1
 Epoch:		0
-License:	GPL
+License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-beta%{_beta}.tar.gz
 # Source0-md5:	914b0272fe68d808ffa11edd741f2eae
