@@ -6,7 +6,7 @@ Summary:	mcache PHP Extension
 Summary(pl):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
-Release:	0.beta%{_beta}.1
+Release:	0.beta%{_beta}.2
 Epoch:		0
 License:	PHP 2.02
 Group:		Development/Languages/PHP
@@ -21,7 +21,7 @@ Requires(post,preun):	php-common >= 4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/php4
-%define		extensionsdir	%(php-config --extension-dir)
+%define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
 
 %description
 mcache is a PHP extension that aims to enable developers to easily and
