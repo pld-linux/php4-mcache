@@ -1,11 +1,11 @@
 %define		_name		mcache
 %define		php_ver		%(rpm -q --qf '%%{epoch}:%%{version}' php4-devel)
 
-%define		_beta	6
 Summary:	mcache PHP Extension
 Summary(pl):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
+%define		_beta	6
 Release:	0.beta%{_beta}.2
 Epoch:		0
 License:	PHP 2.02
@@ -17,7 +17,7 @@ BuildRequires:	automake
 BuildRequires:	libmemcache-devel >= 1.3.0
 BuildRequires:	php4-devel
 Requires:	php4-common = %{php_ver}
-Requires(post,preun):	php-common >= 4.1
+Requires(post,preun):	php-common >= 3:4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/php4
