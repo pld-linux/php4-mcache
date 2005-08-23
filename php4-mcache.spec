@@ -5,13 +5,13 @@ Summary:	mcache PHP Extension
 Summary(pl):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
-%define		_beta	6
-Release:	0.beta%{_beta}.2
+%define		_beta	7
+Release:	0.beta%{_beta}.1
 Epoch:		0
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-beta%{_beta}.tar.gz
-# Source0-md5:	914b0272fe68d808ffa11edd741f2eae
+# Source0-md5:	bbe636154f8dc8ab3889054cf4ace2bd
 URL:		http://www.klir.com/~johnm/php-mcache/
 BuildRequires:	automake
 BuildRequires:	libmemcache-devel >= 1.3.0
