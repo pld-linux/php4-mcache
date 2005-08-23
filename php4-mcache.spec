@@ -1,12 +1,13 @@
 %define		_name		mcache
 %define		php_ver		%(rpm -q --qf '%%{epoch}:%%{version}' php4-devel)
+%define		_sysconfdir	/etc/php4
 
 Summary:	mcache PHP Extension
 Summary(pl):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
 %define		_beta	7
-Release:	0.beta%{_beta}.1
+Release:	0.beta%{_beta}.5
 Epoch:		0
 License:	PHP 2.02
 Group:		Development/Languages/PHP
@@ -15,12 +16,13 @@ Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-beta%{_
 URL:		http://www.klir.com/~johnm/php-mcache/
 BuildRequires:	automake
 BuildRequires:	libmemcache-devel >= 1.3.0
+BuildRequires:	rpmbuild(macros) >= 1.230
 BuildRequires:	php4-devel
 Requires:	php4-common = %{php_ver}
+Requires:	%{_sysconfdir}/conf.d
 Requires(post,preun):	php-common >= 3:4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_sysconfdir	/etc/php4
 %define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
 
 %description
@@ -77,19 +79,26 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	INSTALL_ROOT=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/conf.d
+cat <<'EOF' > $RPM_BUILD_ROOT%{_sysconfdir}/conf.d/%{_name}.ini
+; Enable %{_name} extension module
+extension=%{_name}.so
+EOF
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{_sbindir}/php4-module-install install %{_name} %{_sysconfdir}/php.ini
+[ ! -f /etc/apache/conf.d/??_mod_php4.conf ] || %service -q apache restart
+[ ! -f /etc/httpd/httpd.conf/??_mod_php4.conf ] || %service -q httpd restart
 
-%preun
-if [ "$1" = "0" ]; then
-	%{_sbindir}/php4-module-install remove %{_name} %{_sysconfdir}/php.ini
-fi
+%postun
+[ ! -f /etc/apache/conf.d/??_mod_php4.conf ] || %service -q apache restart
+[ ! -f /etc/httpd/httpd.conf/??_mod_php4.conf ] || %service -q httpd restart
 
 %files
 %defattr(644,root,root,755)
 %doc README index.html
 %doc mcache.php
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/conf.d/%{_name}.ini
 %attr(755,root,root) %{extensionsdir}/mcache.so
