@@ -65,7 +65,6 @@ poprawek b³êdów czy rozszerzeñ dokonanych w tej bibliotece.
 
 %build
 phpize
-%{__aclocal}
 %configure \
 	--with-mcache \
 	--with-php-config=%{_bindir}/php-config
