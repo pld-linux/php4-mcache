@@ -13,7 +13,6 @@ Group:		Development/Languages/PHP
 Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-beta%{_beta}.tar.gz
 # Source0-md5:	bbe636154f8dc8ab3889054cf4ace2bd
 URL:		http://www.klir.com/~johnm/php-mcache/
-BuildRequires:	automake
 BuildRequires:	libmemcache-devel >= 1.3.0
 BuildRequires:	rpmbuild(macros) >= 1.230
 BuildRequires:	php4-devel
