@@ -1,5 +1,6 @@
 %define		_name		mcache
 %define		_sysconfdir	/etc/php4
+%define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
 
 Summary:	mcache PHP Extension
 Summary(pl):	Rozszerzenie PHP mcache
@@ -14,14 +15,12 @@ Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-beta%{_
 # Source0-md5:	bbe636154f8dc8ab3889054cf4ace2bd
 URL:		http://www.klir.com/~johnm/php-mcache/
 BuildRequires:	libmemcache-devel >= 1.3.0
-BuildRequires:	rpmbuild(macros) >= 1.230
 BuildRequires:	php4-devel
+BuildRequires:	rpmbuild(macros) >= 1.230
 %requires_eq_to php4-common php4-devel
 Requires:	%{_sysconfdir}/conf.d
 Requires(post,preun):	php-common >= 3:4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
 
 %description
 mcache is a PHP extension that aims to enable developers to easily and
