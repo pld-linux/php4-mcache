@@ -18,8 +18,8 @@ BuildRequires:	libmemcache-devel >= 1.3.0
 BuildRequires:	php4-devel
 BuildRequires:	rpmbuild(macros) >= 1.230
 %requires_eq_to php4-common php4-devel
-Requires:	%{_sysconfdir}/conf.d
 Requires(post,preun):	php-common >= 3:4.1
+Requires:	%{_sysconfdir}/conf.d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,8 +44,8 @@ testing, bug fixes, or enhancements made to the underlying library.
 mcache to rozszerzenie PHP, którego celem jest umo¿liwienie
 programistom ³atwo i wydajnie cache'owaæ ane w serwerach Memcached.
 
-Rozszerzenie PHP mcache zosta³o stworzone przez Johna McCaskeya i
-jest wrapperem na libmemcache.
+Rozszerzenie PHP mcache zosta³o stworzone przez Johna McCaskeya i jest
+wrapperem na libmemcache.
 
 G³ównymi zaletami u¿ywania tego rozszerzenia mcache nad innymi
 rozszerzeniami PHP s± szybko¶æ oraz funkcjonalno¶æ. Wcze¶niej istnia³o
@@ -96,5 +96,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README index.html
 %doc mcache.php
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/conf.d/%{_name}.ini
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/conf.d/%{_name}.ini
 %attr(755,root,root) %{extensionsdir}/mcache.so
