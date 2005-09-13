@@ -17,7 +17,7 @@ URL:		http://www.klir.com/~johnm/php-mcache/
 BuildRequires:	libmemcache-devel >= 1.3.0
 BuildRequires:	php4-devel
 BuildRequires:	rpmbuild(macros) >= 1.238
-%requires_php_extension
+%{?requires_php_extension}
 Requires(post,preun):	php-common >= 3:4.1
 Requires:	%{_sysconfdir}/conf.d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
