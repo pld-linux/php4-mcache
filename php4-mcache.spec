@@ -6,17 +6,19 @@ Summary:	mcache PHP Extension
 Summary(pl):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
-%define		_beta	7
-Release:	0.beta%{_beta}.7
+%define		_beta	beta9
+%define		_rel	0.1
+Release:	0.%{_beta}.%{_rel}
 Epoch:		0
 License:	PHP 2.02
 Group:		Development/Languages/PHP
-Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-beta%{_beta}.tar.gz
-# Source0-md5:	bbe636154f8dc8ab3889054cf4ace2bd
+Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-%{_beta}.tar.gz
+# Source0-md5:	88b10055fd4118d74c061e6e34e1ed7d
+Patch0:		%{name}-zts.patch
 URL:		http://www.klir.com/~johnm/php-mcache/
 BuildRequires:	libmemcache-devel >= 1.3.0
 BuildRequires:	php4-devel
-BuildRequires:	rpmbuild(macros) >= 1.238
+BuildRequires:	rpmbuild(macros) >= 1.248
 %{?requires_php_extension}
 Requires(post,preun):	php-common >= 3:4.1
 Requires:	%{_sysconfdir}/conf.d
@@ -60,7 +62,8 @@ oparte na libmemcache, bêdzie ³atwo korzystaæ z ka¿dego testowania,
 poprawek b³êdów czy rozszerzeñ dokonanych w tej bibliotece.
 
 %prep
-%setup -q -n php-%{_name}-ext-%{version}%{?_beta:-beta%{_beta}}
+%setup -q -n php-%{_name}-ext-%{version}%{?_beta:-%{_beta}}
+%patch0 -p1
 
 %build
 phpize
