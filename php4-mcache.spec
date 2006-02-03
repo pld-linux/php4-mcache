@@ -9,7 +9,6 @@ Version:	1.2.0
 %define		_beta	beta10
 %define		_rel	1
 Release:	0.%{_beta}.%{_rel}
-Epoch:		0
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-%{_beta}.tar.gz
@@ -90,8 +89,10 @@ rm -rf $RPM_BUILD_ROOT
 [ ! -f /etc/httpd/httpd.conf/??_mod_php4.conf ] || %service -q httpd restart
 
 %postun
-[ ! -f /etc/apache/conf.d/??_mod_php4.conf ] || %service -q apache restart
-[ ! -f /etc/httpd/httpd.conf/??_mod_php4.conf ] || %service -q httpd restart
+if [ "$1" = 0 ]; then
+	[ ! -f /etc/apache/conf.d/??_mod_php4.conf ] || %service -q apache restart
+	[ ! -f /etc/httpd/httpd.conf/??_mod_php4.conf ] || %service -q httpd restart
+fi
 
 %files
 %defattr(644,root,root,755)
