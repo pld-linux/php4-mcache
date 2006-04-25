@@ -21,6 +21,7 @@ BuildRequires:	rpmbuild(macros) >= 1.254
 %{?requires_php_extension}
 Requires(post,preun):	php-common >= 3:4.1
 Requires:	%{_sysconfdir}/conf.d
+Conflicts:	php4-pecl-memcache
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
