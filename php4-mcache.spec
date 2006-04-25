@@ -2,17 +2,18 @@
 %define		_sysconfdir	/etc/php4
 %define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
 
+%define		_beta	beta10
+%define		_rel	2
 Summary:	mcache PHP Extension
 Summary(pl):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
-%define		_beta	beta10
-%define		_rel	1
 Release:	0.%{_beta}.%{_rel}
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-%{_beta}.tar.gz
 # Source0-md5:	b8c77e53d2c2af75411f574f7ed5e3b7
+Source1:	php4-mcache.php
 URL:		http://www.klir.com/~johnm/php-mcache/
 BuildRequires:	libmemcache-devel >= 1.3.0
 BuildRequires:	php4-devel
@@ -63,6 +64,7 @@ poprawek b³êdów czy rozszerzeñ dokonanych w tej bibliotece.
 %setup -q -n php-%{_name}-ext-%{version}%{?_beta:-%{_beta}}
 
 %build
+cp %{SOURCE1} example.php
 phpize
 %configure \
 	--with-mcache \
@@ -96,7 +98,6 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc README index.html
-%doc mcache.php
+%doc README index.html example.php
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/conf.d/%{_name}.ini
 %attr(755,root,root) %{extensionsdir}/mcache.so
