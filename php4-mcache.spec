@@ -63,9 +63,9 @@ poprawek b³êdów czy rozszerzeñ dokonanych w tej bibliotece.
 
 %prep
 %setup -q -n php-%{_name}-ext-%{version}%{?_beta:-%{_beta}}
+cp %{SOURCE1} example.php
 
 %build
-cp %{SOURCE1} example.php
 phpize
 %configure \
 	--with-mcache \
