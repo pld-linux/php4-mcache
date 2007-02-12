@@ -5,7 +5,7 @@
 %define		_beta	beta10
 %define		_rel	2
 Summary:	mcache PHP Extension
-Summary(pl):	Rozszerzenie PHP mcache
+Summary(pl.UTF-8):   Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
 Release:	0.%{_beta}.%{_rel}
@@ -42,24 +42,24 @@ extension that is no longer the case. Furthermore, because this
 extension is based off libmemcache it will easily benefit from any
 testing, bug fixes, or enhancements made to the underlying library.
 
-%description -l pl
-mcache to rozszerzenie PHP, którego celem jest umo¿liwienie
-programistom ³atwo i wydajnie cache'owaæ ane w serwerach Memcached.
+%description -l pl.UTF-8
+mcache to rozszerzenie PHP, ktÃ³rego celem jest umoÅ¼liwienie
+programistom Å‚atwo i wydajnie cache'owaÄ‡ ane w serwerach Memcached.
 
-Rozszerzenie PHP mcache zosta³o stworzone przez Johna McCaskeya i jest
+Rozszerzenie PHP mcache zostaÅ‚o stworzone przez Johna McCaskeya i jest
 wrapperem na libmemcache.
 
-G³ównymi zaletami u¿ywania tego rozszerzenia mcache nad innymi
-rozszerzeniami PHP s± szybko¶æ oraz funkcjonalno¶æ. Wcze¶niej istnia³o
-kilka ró¿nych API memcache dla PHP. Kilka z nich by³o dobrych pod
-wzglêdem funkcjonalno¶ci, ale wolnych ze wzglêdu na natywn±
-implementacjê w PHP. Rozszerzenie PECL mia³o znakomit± szybko¶æ (choæ
-nie tak dobr± jak mcache), ale nie obs³ugiwa³o wielu serwerów
-U¿ytkownicy byli zmuszeni do wybierania miêdzy szybko¶ci± a
-funkcjonalno¶ci±. Wraz z wprowadzeniem tego nowego rozszerzenia
-problem przesta³ istnieæ. Co wiêcej, poniewa¿ to rozszerzenie jest
-oparte na libmemcache, bêdzie ³atwo korzystaæ z ka¿dego testowania,
-poprawek b³êdów czy rozszerzeñ dokonanych w tej bibliotece.
+GÅ‚Ã³wnymi zaletami uÅ¼ywania tego rozszerzenia mcache nad innymi
+rozszerzeniami PHP sÄ… szybkoÅ›Ä‡ oraz funkcjonalnoÅ›Ä‡. WczeÅ›niej istniaÅ‚o
+kilka rÃ³Å¼nych API memcache dla PHP. Kilka z nich byÅ‚o dobrych pod
+wzglÄ™dem funkcjonalnoÅ›ci, ale wolnych ze wzglÄ™du na natywnÄ…
+implementacjÄ™ w PHP. Rozszerzenie PECL miaÅ‚o znakomitÄ… szybkoÅ›Ä‡ (choÄ‡
+nie tak dobrÄ… jak mcache), ale nie obsÅ‚ugiwaÅ‚o wielu serwerÃ³w
+UÅ¼ytkownicy byli zmuszeni do wybierania miÄ™dzy szybkoÅ›ciÄ… a
+funkcjonalnoÅ›ciÄ…. Wraz z wprowadzeniem tego nowego rozszerzenia
+problem przestaÅ‚ istnieÄ‡. Co wiÄ™cej, poniewaÅ¼ to rozszerzenie jest
+oparte na libmemcache, bÄ™dzie Å‚atwo korzystaÄ‡ z kaÅ¼dego testowania,
+poprawek bÅ‚Ä™dÃ³w czy rozszerzeÅ„ dokonanych w tej bibliotece.
 
 %prep
 %setup -q -n php-%{_name}-ext-%{version}%{?_beta:-%{_beta}}
