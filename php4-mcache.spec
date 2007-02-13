@@ -5,7 +5,7 @@
 %define		_beta	beta10
 %define		_rel	2
 Summary:	mcache PHP Extension
-Summary(pl.UTF-8):   Rozszerzenie PHP mcache
+Summary(pl.UTF-8):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
 Version:	1.2.0
 Release:	0.%{_beta}.%{_rel}
