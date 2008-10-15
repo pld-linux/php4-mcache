@@ -3,7 +3,7 @@
 %define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
 
 %define		_beta	beta10
-%define		_rel	2
+%define		_rel	3
 Summary:	mcache PHP Extension
 Summary(pl.UTF-8):	Rozszerzenie PHP mcache
 Name:		php4-%{_name}
@@ -16,11 +16,10 @@ Source0:	http://www.klir.com/~johnm/php-mcache/php-mcache-ext-%{version}-%{_beta
 Source1:	php4-mcache.php
 URL:		http://www.klir.com/~johnm/php-mcache/
 BuildRequires:	libmemcache-devel >= 1.3.0
-BuildRequires:	php4-devel
-BuildRequires:	rpmbuild(macros) >= 1.322
+BuildRequires:	php4-devel >= 3:4.0.0
+BuildRequires:	rpmbuild(macros) >= 1.344
 %{?requires_php_extension}
-Requires(post,preun):	php-common >= 3:4.1
-Requires:	%{_sysconfdir}/conf.d
+Requires:	php4-common >= 3:4.4.0-3
 Conflicts:	php4-pecl-memcache
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -88,13 +87,11 @@ EOF
 rm -rf $RPM_BUILD_ROOT
 
 %post
-[ ! -f /etc/apache/conf.d/??_mod_php4.conf ] || %service -q apache restart
-[ ! -f /etc/httpd/httpd.conf/??_mod_php4.conf ] || %service -q httpd restart
+%php4_webserver_restart
 
 %postun
 if [ "$1" = 0 ]; then
-	[ ! -f /etc/apache/conf.d/??_mod_php4.conf ] || %service -q apache restart
-	[ ! -f /etc/httpd/httpd.conf/??_mod_php4.conf ] || %service -q httpd restart
+	%php4_webserver_restart
 fi
 
 %files
